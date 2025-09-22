@@ -548,7 +548,56 @@ export default function XRPTransactionApp() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Transaction JSON</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              Transaction JSON
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                    <Info className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl">
+                  <DialogHeader>
+                    <DialogTitle>Interchain Transaction Fees</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
+                        <div>
+                          <h4 className="font-medium text-yellow-800">Important: Axelar Network Fees</h4>
+                          <p className="text-sm text-yellow-700 mt-1">
+                            For interchain transactions using Axelar GMP, the network requires <strong>3 XRP</strong> in fees on the testnet.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-sm text-muted-foreground">
+                        When creating interchain transactions:
+                      </p>
+                      <div className="space-y-2">
+                        <div className="flex flex-col space-y-1 p-3 bg-muted rounded-lg">
+                          <span className="font-medium text-sm">• Minimum Amount</span>
+                          <span className="text-muted-foreground text-sm">Your transaction amount should be greater than 3 XRP to cover Axelar fees</span>
+                        </div>
+                        <div className="flex flex-col space-y-1 p-3 bg-muted rounded-lg">
+                          <span className="font-medium text-sm">• Testnet Only</span>
+                          <span className="text-muted-foreground text-sm">This 3 XRP fee applies specifically to the testnet environment</span>
+                        </div>
+                        <div className="flex flex-col space-y-1 p-3 bg-muted rounded-lg">
+                          <span className="font-medium text-sm">• XRP Units</span>
+                          <span className="text-muted-foreground text-sm">3 XRP = 3,000,000 drops (1 XRP = 1,000,000 drops)</span>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Make sure your transaction amount accounts for these fees to ensure successful cross-chain transfers.
+                      </p>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </CardTitle>
             <CardDescription>
               Enter your XRP transaction in JSON format. The editor provides syntax highlighting and validation. Your
               JSON will be saved automatically.
